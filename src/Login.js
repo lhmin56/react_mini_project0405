@@ -2,22 +2,32 @@ import React from 'react';
 import './Login.css';
 
 export default class Login extends React.Component{ 
-    constructor(props) { //이거 생성자
-        super(props); 
-        this.state = { 
-            id: "", 
-            pwd: ""
-        };
-    }; 
-
-    handleChange(){
-        if(this.state.id != "admin"){
-            alert("test")
-            return false;
+    constructor(props) {  //이거 생성자
+        super(props);
+        this.state = {
+            id : '',
+            password: ''
         }
-    } //이거 함수는 생성자 안에 쓰면안됭 오류나영 웅웅
 
+    }; 
+        appChange = (e) => {
+            this.setState({
+                id : e.target.value
+            });
+        }
+
+        appClick = (e) => {
+            if(this.state.id !== "admin"){
+                alert("'${this.state.id11}' 아이디를 다시 입력하세요.");
+                e.preventDefault(); //이 함수에서 이벤트 발생하지 않도록 지정
+            }
+        }
+
+
+        
  render(){
+    //  const { id } = this.state;
+    //  const { appChange, appClick } = this;
      return ( 
         <div class="inner_login">
             <div class="login_1">
@@ -26,14 +36,14 @@ export default class Login extends React.Component{
                     <div class="box_login">
                         <div class="inp_text">
                             <label for="loginid">아이디</label>
-                            <input type="text" className="form-control" id="id" placeholder="ID"></input>
+                            <input type="text" className="form-control"  value={this.state.id} placeholder="ID" onChange={this.appChange}/>
                         </div>
                         <div class="inp_text">
                             <label for="loginid">비밀번호</label>
-                            <input type="text" className="form-control" id="pwd" placeholder="PASSWORD"></input>
+                            <input type="text" className="form-control" placeholder="PASSWORD"></input>
                         </div>
                     </div>       
-                    <button type="submit" class="btn_login" onClick={this.handleChange}>로그인</button>
+                    <button type="submit" class="btn_login" onClick={this.appClick}>로그인</button>
                     <div class="login_append">
                         <div class="inp_chk">       
                             <input type="checkbox" id="keepLogin" name="keepLogin"></input>
@@ -48,8 +58,7 @@ export default class Login extends React.Component{
                 </form> 
             </div>
           </div>
-
          );
-    }; 
-} 
+    }
+}
 

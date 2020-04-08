@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.css';
 
+
 export default class Login extends React.Component{ 
     constructor(props) {  //이거 생성자
         super(props);

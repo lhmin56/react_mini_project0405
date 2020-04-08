@@ -11,22 +11,30 @@ export default class Login extends React.Component{
         }
 
     }; 
-        appChange = (e) => {
+        appChange = e => {     //넹 글고 파라미터가 하나면 가로생략가능 두개면 ()해줘야됨
             this.setState({
                 id : e.target.value
             });
         }
 
+        /*
+        appChange = function(e){
+            // " => "  화살표가 function생략
+        }
+        */
+
         appClick = (e) => {
             if(this.state.id !== "admin"){
-                alert("'${this.state.id11}' 아이디를 다시 입력하세요.");
+                alert("[" + this.state.id + "] 아이디를 다시 입력하세요.");
                 e.preventDefault(); //이 함수에서 이벤트 발생하지 않도록 지정
             }
         }
 
 
-        
  render(){
+    // this를 쓰면 변수 안 만들어도 한번에 사용 할 수있다.
+    // setState = 유동적인 값을 저장하는 것
+    // props는 반환하지 않는 값을 저장하는 것
     //  const { id } = this.state;
     //  const { appChange, appClick } = this;
      return ( 
